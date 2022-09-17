@@ -14,11 +14,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const colors_1 = __importDefault(require("colors"));
 const mongoose_1 = __importDefault(require("mongoose"));
-const MONGODB_USER = process.env.MONGO_USER || "";
-const MONGODB_PASSWORD = process.env.MONGO_PASS || "";
+const MONGODB_CONNECTION = process.env.MONGO_URI || "";
 const dbConnect = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        yield mongoose_1.default.connect(`mongodb+srv://${MONGODB_USER}:${MONGODB_PASSWORD}@kiron.ripcl.mongodb.net/?retryWrites=true&w=majority`);
+        yield mongoose_1.default.connect(MONGODB_CONNECTION);
         console.log(colors_1.default.cyan.italic(`Database connection is successful 🛢`));
     }
     catch (error) {

@@ -1,10 +1,9 @@
 import colors from "colors";
 import mongoose from "mongoose";
-const MONGODB_USER = process.env.MONGO_USER || "";
-const MONGODB_PASSWORD = process.env.MONGO_PASS || "";
+const MONGODB_CONNECTION = process.env.MONGO_URI || "";
 const dbConnect = async (): Promise<void> => {
   try {
-    await mongoose.connect(`mongodb+srv://${MONGODB_USER}:${MONGODB_PASSWORD}@kiron.ripcl.mongodb.net/?retryWrites=true&w=majority`);
+    await mongoose.connect(MONGODB_CONNECTION);
     console.log(colors.cyan.italic(`Database connection is successful 🛢`));
   } catch (error) {
     console.log(colors.red.italic(`Database connection failed 🛢`));
